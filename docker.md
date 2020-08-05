@@ -1,4 +1,13 @@
 # Docker手册
+#修改镜像地址
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://t5t8q6wn.mirror.aliyuncs.com"]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker
 # 容器信息
 ### 查看docker容器版本
 docker version
