@@ -22,6 +22,11 @@ xid：事务id，是一个流水号。
 
 ## 变量以及方法介绍
 ```java
+    public enum LearnerType {
+        PARTICIPANT, OBSERVER;
+    }
+```
+```java
 public FastLeaderElection(QuorumPeer self, QuorumCnxManager manager) {
         this.stop = false;
         this.manager = manager;
