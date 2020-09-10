@@ -81,13 +81,23 @@ docker rmi -f redis tomcat nginx
 docker rmi -f $(docker images -q)
 ```
 ## 镜像构建
-## （1）编写dockerfile
+### （1）编写dockerfile
 ```
 cd /docker/dockerfile
 ```
-##（2）构建docker镜像
+###（2）构建docker镜像
 ```
 docker build -f /docker/dockerfile/mycentos -t mycentos:1.1
+```
+## 镜像导出
+### docker save
+```
+docker save -o /keycloak.tar jboss/keycloak
+```
+## 镜像导入
+### docker load
+```
+docker load -i /keycloak.tar 
 ```
 # 容器操作
 ## 容器启动
@@ -244,4 +254,14 @@ docker cp [local_path] rabbitmq:/[container_path]/
 ### 将主机文件copy至rabbitmq容器，目录重命名为[container_path]（注意与非重命名copy的区别）
 ```
 docker cp [local_path] rabbitmq:/[container_path]
+```
+## 容器的导出
+### export
+```
+docker export -o nginx-test.tar nginx-test
+```
+## 容器的导入
+### import
+```
+docker import nginx-test.tar nginx:imp
 ```
